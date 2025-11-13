@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "intel-fix",
+  "version": "${version}",
+  "name": "Intel Fix",
+  "description": "fix for graphics corruption on newer intel video drivers",
+  "authors": [
+    "tildejustin"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/intel-fix",
+    "sources": "https://github.com/tildejustin/intel-fix",
+    "issues": "https://github.com/tildejustin/intel-fix/issues"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "mixins": [
+    "intelfix.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "*",
+    "fabricloader": ">=0.15.0"
+  }
+}

@@ -1,0 +1,14 @@
+[versions]
+minecraft = "1.7.10"
+yarn_build = "576"
+fabric_loader = "0.18.0"
+loom = "1.12-SNAPSHOT"
+legacy-looming = "1.12-SNAPSHOT"
+
+[libraries]
+minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
+fabric_loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric_loader" }
+
+[plugins]
+fabric_loom = { id = "fabric-loom", version.ref = "loom" }
+legacy_looming = { id = "legacy-looming", version.ref = "legacy-looming" }
