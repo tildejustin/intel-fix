@@ -1,5 +1,6 @@
 package dev.tildejustin.intelfix.mixin;
 
+import dev.tildejustin.intelfix.IntelFix;
 import net.minecraft.client.render.Tessellator;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
@@ -12,11 +13,6 @@ import java.lang.invoke.*;
 // ornithe: BufferBuilder
 @Mixin(value = Tessellator.class, targets = {"net.minecraft.unmapped.C_5786166", "net.minecraft.unmapped.C_2334550"})
 public class TessellatorMixin {
-    @Unique
-    private static MethodHandle setClientActiveTexture;
-    @Unique
-    private static int defaultTextureUnit;
-
     @Dynamic
     @Inject(
             method = {
@@ -31,7 +27,7 @@ public class TessellatorMixin {
             )
     )
     private void setClientActiveTextureToDefault(CallbackInfoReturnable<Integer> cir) throws Throwable {
-        setClientActiveTexture.invoke(defaultTextureUnit);
+        IntelFix.setClientActiveTexture.invoke(IntelFix.defaultTextureUnit);
     }
 
     static {
@@ -52,9 +48,9 @@ public class TessellatorMixin {
             System.out.println("trying");
             Class<?> glx = Class.forName("net.minecraft." + glxName);
             System.out.println("found class");
-            defaultTextureUnit = glx.getField(defaultTextureUnitName).getInt(null);
+            IntelFix.defaultTextureUnit = glx.getField(defaultTextureUnitName).getInt(null);
             System.out.println("found field");
-            setClientActiveTexture = MethodHandles.publicLookup().findStatic(glx, setClientActiveTextureName, MethodType.methodType(void.class, int.class));
+            IntelFix.setClientActiveTexture = MethodHandles.publicLookup().findStatic(glx, setClientActiveTextureName, MethodType.methodType(void.class, int.class));
             System.out.println("found method");
             return true;
         } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException | NoSuchMethodException e) {

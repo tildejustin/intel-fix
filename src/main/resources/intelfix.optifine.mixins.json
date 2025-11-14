@@ -3,7 +3,7 @@
   "package": "dev.tildejustin.intelfix.mixin",
   "compatibilityLevel": "JAVA_8",
   "client": [
-    "TessellatorMixin"
+    "ShadersTessMixin"
   ],
   "injectors": {
     "defaultRequire": 1

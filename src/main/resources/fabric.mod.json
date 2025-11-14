@@ -17,6 +17,11 @@
   "mixins": [
     "intelfix.mixins.json"
   ],
+  "entrypoints": {
+    "preLaunch": [
+      "dev.tildejustin.intelfix.IntelFix"
+    ]
+  },
   "depends": {
     "minecraft": "*",
     "fabricloader": ">=0.15.0"
