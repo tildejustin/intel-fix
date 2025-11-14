@@ -45,13 +45,9 @@ public class TessellatorMixin {
     @Unique
     private static boolean setWithMappings(String glxName, String defaultTextureUnitName, String setClientActiveTextureName) {
         try {
-            System.out.println("trying");
             Class<?> glx = Class.forName("net.minecraft." + glxName);
-            System.out.println("found class");
             IntelFix.defaultTextureUnit = glx.getField(defaultTextureUnitName).getInt(null);
-            System.out.println("found field");
             IntelFix.setClientActiveTexture = MethodHandles.publicLookup().findStatic(glx, setClientActiveTextureName, MethodType.methodType(void.class, int.class));
-            System.out.println("found method");
             return true;
         } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException | NoSuchMethodException e) {
             return false;
